@@ -1,0 +1,39 @@
+{
+  "name": "@weegl/discord-oauth2",
+  "version": "1.0.1",
+  "description": "A simple and lightweight Discord OAuth2 client implementation with TypeScript support",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weegl/discord-oauth2.git"
+  },
+  "keywords": [
+    "discord",
+    "oauth2",
+    "authentication",
+    "api",
+    "discord-oauth",
+    "discord-api",
+    "oauth",
+    "authorization"
+  ],
+  "author": {
+    "name": "Weegl",
+    "email": "votre@email.com",
+    "url": "https://github.com/weegl"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weegl/discord-oauth2/issues"
+  },
+  "homepage": "https://github.com/weegl/discord-oauth2#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
