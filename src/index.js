@@ -27,14 +27,15 @@ class DiscordOauth2 {
     }
 
     /**
+     * @param {string} [redirectUri] - Optional redirect URI that overrides the default one
      * @returns {string} The authorization URL
      */
-    generateAuthorizeURL() {
+    generateAuthorizeURL(redirectUri) {
         const redirect = 'https://discord.com/api/oauth2/authorize?';
 
         const query = new URLSearchParams({
             'client_id': this.clientId,
-            'redirect_uri': this.redirectUri,
+            'redirect_uri': redirectUri || this.redirectUri,
             'response_type': 'code',
             'scope': this.scope
         })
@@ -44,9 +45,10 @@ class DiscordOauth2 {
 
     /**
      * @param {string} code - The authorization code
+     * @param {string} [redirectUri] - Optional redirect URI that overrides the default one
      * @returns {Promise<Object>} The OAuth2 tokens
      */
-    async getToken(code) {
+    async getToken(code, redirectUri) {
         return fetch(Endpoints.token, {
             'method': 'POST',
             'headers': {
@@ -56,7 +58,7 @@ class DiscordOauth2 {
                 'client_id': this.clientId,
                 'client_secret': this.clientSecret,
                 'code': code,
-                'redirect_uri': this.redirectUri,
+                'redirect_uri': redirectUri || this.redirectUri,
                 'grant_type': this.grantType
             })
         }).then(async (response) => {

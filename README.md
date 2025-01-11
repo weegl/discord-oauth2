@@ -27,16 +27,22 @@ const oauth = new DiscordOauth2({
 ### Generate Authorization URL
 
 ```javascript
+// Use default redirectUri from constructor
 const url = oauth.generateAuthorizeURL();
-// Redirect user to this URL
+
+// Or specify a different redirectUri
+const url = oauth.generateAuthorizeURL('http://localhost:3000/different-callback');
 ```
 
 ### Get Access Token
 
 ```javascript
 try {
+    // Use default redirectUri from constructor
     const tokenData = await oauth.getToken('authorization_code_here');
-    // tokenData contains access_token and other OAuth2 response data
+    
+    // Or specify a different redirectUri
+    const tokenData = await oauth.getToken('authorization_code_here', 'http://localhost:3000/different-callback');
 } catch (error) {
     console.error('Failed to get token:', error);
 }
